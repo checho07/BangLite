@@ -14,3 +14,23 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+@font-face{
+    font-family: Delius;
+    src: url('../assets/fonts/delius.woff2');
+
+};
+@font-face{
+    font-family: ShadowIntoLight;
+    src: url('../assets/fonts/Shadows Into Light Two.woff2');
+
+};
+
+h1, ion-title{
+    font-family: 'ShadowIntoLight' !important;
+    color: #FF9052 !important;
+}
+
+p,ion-item,button{
+    font-family: 'Delius' !important;
+
+}

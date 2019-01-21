@@ -1,14 +1,22 @@
-<ion-header>
+<!-- <ion-header>
   <ion-navbar>
     <ion-title>
       Ionic Blank
     </ion-title>
   </ion-navbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+<ion-content scroll="false" no-bounce>
+  <!-- <div id="image" #myElement></div> -->
+ 
+  <div padding id="btns">
+    <img src="../../assets/backgrounds/BOTON.png" alt="" (tap)="presentProfileModalLogIn()">
+    <img src="../../assets/backgrounds/BOTON2.png" alt="" (tap)="presentProfileModalSignUp()">
+  </div>  
+
+  <div id="container" #myElement>
+    <img src="../../assets/backgrounds/PantalllaInicio.png" id="img">
+  </div>
+
 </ion-content>

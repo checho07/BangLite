@@ -1,0 +1,39 @@
+page-sign-up-form {
+ion-content{
+    background-image: url('../../assets/backgrounds/formulariolite2.png');
+    background-size: cover;
+    background-position: left;
+    background-repeat: round ;
+
+}
+.itemSelect{
+    width: 85%;
+    // top:40%;
+    // left: 20%;
+    
+    // margin: 10px;
+    
+}
+.list{
+    position: absolute;
+    left: 15%;
+    bottom: 44%;
+    height: 10%;
+}
+.title{
+    position: absolute;
+    top: 31.5%;
+    left:15%;
+    font-size: x-large;
+}
+.btnForm{
+    width: 85%;
+    margin-top:5px !important;
+ 
+    // bottom: 8%;
+    // left: 20%;
+    // padding: 5px;
+    // margin: 10px;
+}
+
+}
