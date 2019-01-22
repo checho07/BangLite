@@ -78,7 +78,7 @@ export class RegisterPage {
         this.nativeStorage.setItem('uid',result.user.uid);
         
         
-        this.afs.collection('users').add({email,name,uid,dob}).then(fsRes=>{
+        this.afs.collection('users').doc(result.user.uid).set({email,name,uid,dob}).then(fsRes=>{
 
            
             if(newUser){

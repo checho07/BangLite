@@ -8,14 +8,14 @@
      
     <ion-item class="itemSelect">
         <ion-label>Genero</ion-label>
-        <ion-select [(ngModel)]="genero" interface="popover"  (ionChange)="ableFn(1)" >
+        <ion-select [(ngModel)]="formulario.genero" interface="popover"  (ionChange)="ableFn(1)" >
           <ion-option value="Femenino">Femenino</ion-option>
           <ion-option value="Masculino">Masculino</ion-option>
         </ion-select>
       </ion-item>
       <ion-item class="itemSelect">
           <ion-label>Modalidad</ion-label>
-          <ion-select [(ngModel)]="modalidad" interface="popover"  (ionChange)="testfn($event)"  disabled="{{modDisabled}}">
+          <ion-select [(ngModel)]="formulario.modalidad" interface="popover"  (ionChange)="testfn($event)"  disabled="{{modDisabled}}">
             <ion-option value="Presencial">Presencial</ion-option>
             <ion-option value="Distancia">Distancia</ion-option>
             <ion-option value="Virtual">Virtual</ion-option>
@@ -24,7 +24,7 @@
         </ion-item>
         <ion-item class="itemSelect">
             <ion-label text-wrap>Programa académico</ion-label>
-            <ion-select  text-wrap [(ngModel)]="programa" interface="popover"   selectedText="Programa" disabled="true" disabled="{{proDisabled}}" (ionChange)="ableFn(3)">
+            <ion-select  text-wrap [(ngModel)]="formulario.programa" interface="popover"   selectedText="Programa" disabled="true" disabled="{{proDisabled}}" (ionChange)="ableFn(3)">
               <span text-wrap *ngIf="modSelected == 1"> <ion-option text-wrap value="{{programa}}" *ngFor="let programa of programasPresencial"  >{{programa}}</ion-option></span>
               <span text-wrap *ngIf="modSelected == 2"> <ion-option text-wrap value="{{programa}}" *ngFor="let programa of programasDistancia"  >{{programa}}</ion-option></span>              
               <span text-wrap *ngIf="modSelected == 3"> <ion-option text-wrap value="{{programa}}" *ngFor="let programa of programasVirtual"  >{{programa}}</ion-option></span>           
@@ -33,7 +33,7 @@
           </ion-item>
           <ion-item class="itemSelect">
               <ion-label text-wrap>Nivel académico</ion-label>
-              <ion-select [(ngModel)]="nivel" interface="popover"  disabled="true" disabled="{{nivDisabled}}" (ionChange)="ableFn(4)">
+              <ion-select [(ngModel)]="formulario.nivel" interface="popover"  disabled="true" disabled="{{nivDisabled}}" (ionChange)="ableFn(4)">
                 <ion-option value="Tecnico">Técnico</ion-option>
                 <ion-option value="Tecnologo">Tecnólogo</ion-option>
                 <ion-option value="Profesional">Profesional</ion-option>
@@ -43,7 +43,7 @@
             </ion-item>
             <ion-item class="itemSelect">
                 <ion-label text-wrap>¿Cómo supiste de nosotros?  </ion-label>
-                <ion-select [(ngModel)]="publicidad" interface="popover"  disabled="true" disabled="{{redDisabled}}" (ionChange)="ableFn(5)">
+                <ion-select [(ngModel)]="formulario.publicidad" interface="popover"  disabled="true" disabled="{{redDisabled}}" (ionChange)="ableFn(5)">
                   <ion-option value="amigo">Amigo y/o compañero</ion-option>
                   <ion-option value="docente">Docente</ion-option>
                   <ion-option value="store">App Store o Play Store</ion-option>
@@ -51,7 +51,7 @@
                   <ion-option value="buscador">Búsqueda (ej: google)</ion-option>
                 </ion-select>
               </ion-item>
-                <button ion-button class="btnForm" color="dark" round  block [disabled]="btnDisabled">Siguiente</button>
+                <button ion-button class="btnForm" color="dark" round  block [disabled]="btnDisabled" (click)="saveForm()">Siguiente</button>
              
               </ion-list>
 </ion-content>

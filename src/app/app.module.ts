@@ -1,3 +1,4 @@
+import { MainPage } from './../pages/main/main';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { SignUpFormPage } from './../pages/sign-up-form/sign-up-form';
 import { LoginPage } from './../pages/login/login';
@@ -34,7 +35,8 @@ export const environment = {
     RegisterPage,LoginPage,
     AnimatesDirective,
     SignUpFormPage,
-    TutorialPage
+    TutorialPage,
+    MainPage
     
   ],
   imports: [
@@ -53,7 +55,8 @@ export const environment = {
     HomePage,
     RegisterPage,LoginPage,
     SignUpFormPage,
-    TutorialPage
+    TutorialPage,
+    MainPage
   ],
   providers: [
     StatusBar,

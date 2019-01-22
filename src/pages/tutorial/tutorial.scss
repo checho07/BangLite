@@ -1,3 +1,39 @@
 page-tutorial {
+ 
+  .dvit{
+      position: absolute;
+      left: 0;
+      top: 0;
+      height:100%!important;
+     width: 100% !important;
+  }
+  img{
+     
+     height:fit-content !important;
+  }
 
+  .swiper-pagination-bullet-active {
+    background: color($colors,text);
+    opacity: 1;
+    }
+
+    div.swiper-pagination {
+        top:20px;
+        bottom:inherit;
+     }
+     .slide-title{
+         z-index: 3;
+         position: absolute;
+         color:white !important;
+         top: 10%;
+     }
+
+     .btn{
+        z-index: 3;
+        position: absolute;
+        color:color($colors,text) !important;
+        top: 80%;
+        left: 30%;
+        text-transform: capitalize;
+     }
 }

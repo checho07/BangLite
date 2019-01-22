@@ -29,15 +29,15 @@
 
 <ion-content class="bgColor" no-bounce>
 
- <form  [formGroup]="SignInForm" (ngSubmit)="register()" class="formR" >
+ <form  [formGroup]="SignInForm" (ngSubmit)="login()" class="formR" >
       
 
       <ion-item>
           <ion-label floating>
             <ion-icon name="person" item-start class="text-primary"></ion-icon>
-            Usuario
+            Correo
           </ion-label>
-          <ion-input  type="text" formControlName="user"></ion-input>
+          <ion-input  type="text" formControlName="email"></ion-input>
         </ion-item>     
 
       <ion-item>

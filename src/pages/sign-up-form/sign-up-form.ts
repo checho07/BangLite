@@ -1,7 +1,10 @@
+import { MainPage } from './../main/main';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
-import { NavController, NavParams, Select } from 'ionic-angular';
-import { NgSwitchCase } from '@angular/common';
+import { NavController, NavParams, Select, ToastController, LoadingController } from 'ionic-angular';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { NativeStorage } from '@ionic-native/native-storage';
+import { TutorialPage } from '../tutorial/tutorial';
 /**
  * Generated class for the SignUpFormPage page.
  *
@@ -14,7 +17,10 @@ import { NgSwitchCase } from '@angular/common';
   templateUrl: 'sign-up-form.html',
 })
 export class SignUpFormPage {
-  public  SignUpForm: FormGroup;
+
+
+
+
   public programasPresencial:any[];
   public programasVirtual:any[];
   public programasDistancia:any[];
@@ -24,18 +30,25 @@ export class SignUpFormPage {
    nivDisabled:boolean = true;
    redDisabled:boolean = true;
    btnDisabled:boolean = true;
+   formulario = {genero:'',modalidad:'',programa:'',nivel:'',publicidad:'',uid:''};
    
-  constructor(public navCtrl: NavController,private formBuilder:FormBuilder, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+              private afst: AngularFirestore,
+              private formBuilder:FormBuilder,
+              private nativeStorage: NativeStorage, 
+              public navParams: NavParams,
+              private toastCtrl: ToastController,
+               private loadinCtrl : LoadingController) {
   
-    this.SignUpForm = this.formBuilder.group({
-      name:["",Validators.required],
-      user:["",Validators.required],
-      password:["",Validators.required],
-      DOB:["",Validators.required]
-    }); 
+    
 
+    this.nativeStorage.getItem('uid').then(res=>
+      {
+        this.formulario.uid = res;
+      });
 
 };
+
 
   ionViewDidLoad() {
     this.programasDistancia = [
@@ -103,6 +116,33 @@ export class SignUpFormPage {
       this.modSelected = 0;
     }
     console.log(this.modSelected)
+  };
+
+  saveForm(){
+
+    let loading = this.loadinCtrl.create(
+      {
+      content:"Guardando datos..."
+      })
+    loading.present();
+
+    this.afst.collection('users').doc(this.formulario.uid).collection('formulario').doc(this.formulario.uid).set(this.formulario).then(result=>
+      {
+      console.log(result);
+      loading.dismiss();
+      this.navCtrl.setRoot(TutorialPage);
+      this.presentToast("Datos Guardados.");
+     
+      })
+    
+  };
+  presentToast(msj : string){
+    let toast = this.toastCtrl.create({
+      message: msj,
+      duration: 3000,
+      position: 'bottom'
+    });
+    toast.present();
   }
 
 
