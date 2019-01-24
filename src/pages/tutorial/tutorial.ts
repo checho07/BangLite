@@ -1,5 +1,7 @@
+import { MainPage } from './../main/main';
 import { Component } from '@angular/core';
 import { NavController, NavParams, Platform } from 'ionic-angular';
+import { NativeTransitionOptions,NativePageTransitions } from '@ionic-native/native-page-transitions';
 
 /**
  * Generated class for the TutorialPage page.
@@ -17,8 +19,10 @@ export class TutorialPage {
   showSkip = true;
   dir: string = 'ltr';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public platform: Platform) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public platform: Platform,private nativePageTransitions: NativePageTransitions) {
   
+
+
     this.dir = platform.dir();
     this.slides = [
       {
@@ -42,6 +46,22 @@ export class TutorialPage {
 
   onSlideChangeStart(slider) {
     this.showSkip = !slider.isEnd();
+  }
+
+  goToMainPage(){
+    // this.navCtrl.setRoot(MainPage);
+    let options: NativeTransitionOptions = {
+      direction: 'up',
+      duration: 2000,
+      slowdownfactor: 2,
+      slidePixels: 0,
+      iosdelay: 100,
+      androiddelay: 200,
+      fixedPixelsTop: 0,
+      fixedPixelsBottom: 0
+     };
+    this.nativePageTransitions.slide(options);
+    this.navCtrl.setRoot(MainPage);
   }
 
 }

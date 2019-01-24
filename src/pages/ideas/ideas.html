@@ -1,0 +1,60 @@
+<!--
+  Generated template for the IdeasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header >
+
+  <ion-navbar color="dark">
+    <ion-title style="text-transform: capitalize">banco de ideas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    
+    <ion-item>      
+        <ion-textarea 
+           [(ngModel)]='titulo'
+           clearOnEdit="true"
+           autofocus="true" 
+           spellcheck="true" 
+           maxLength="40"
+           required="true"
+           placeholder="Titulo de tu idea."> 
+        </ion-textarea>     
+      </ion-item>
+  <ion-item>      
+    <ion-textarea 
+    [(ngModel)]='idea'
+     clearOnEdit="true"
+       spellcheck="true" 
+       maxLength="300"
+       rows="3"
+       required="true"
+       placeholder="Escribe tu idea."> 
+    </ion-textarea>     
+  </ion-item>
+  <br>
+  <ion-item-divider color="light">
+      <ion-label>
+        Tus ideas
+      </ion-label>      
+    </ion-item-divider>
+
+  <ion-list no-lines >
+  
+           <ion-item *ngFor="let idea of ideasCollection | async" > 
+              <ion-icon name="bulb" item-start></ion-icon>
+               {{idea.titulo}}            
+            </ion-item>
+         
+    </ion-list>
+
+<ion-fab bottom right >
+   <button color="dark" ion-fab  (click)="addIdea()"> <ion-icon name="add"> </ion-icon> </button>
+</ion-fab>
+ 
+</ion-content>

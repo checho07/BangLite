@@ -1,3 +1,4 @@
+import { ProfilePage } from './../pages/profile/profile';
 import { MainPage } from './../pages/main/main';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { SignUpFormPage } from './../pages/sign-up-form/sign-up-form';
@@ -15,6 +16,10 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { AnimationService, AnimatesDirective} from 'css-animator';
 import { TutorialPage } from '../pages/tutorial/tutorial';
+import { NativePageTransitions } from '@ionic-native/native-page-transitions';
+import { LottieAnimationViewModule } from 'lottie-angular2';
+import { IdeasPage } from '../pages/ideas/ideas';
+import { identifierModuleUrl } from '@angular/compiler';
 
 export const environment = {
   production: false,
@@ -36,13 +41,15 @@ export const environment = {
     AnimatesDirective,
     SignUpFormPage,
     TutorialPage,
-    MainPage
+    MainPage,
+    ProfilePage,
+    IdeasPage
     
   ],
   imports: [
     BrowserModule,
+    LottieAnimationViewModule.forRoot(),
     IonicModule.forRoot(MyApp,{
-      pageTransition: 'ios-transition',
       popoverLeave:'wp-transition'
     }),
     AngularFireModule.initializeApp(environment.firebase, 'BangLite'),
@@ -56,13 +63,16 @@ export const environment = {
     RegisterPage,LoginPage,
     SignUpFormPage,
     TutorialPage,
-    MainPage
+    MainPage,
+    ProfilePage,
+    IdeasPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     AnimationService,
     NativeStorage,
+    NativePageTransitions,
     
     
     {provide: ErrorHandler, useClass: IonicErrorHandler}

@@ -1,3 +1,4 @@
+import { ProfilePage } from './../pages/profile/profile';
 import { TutorialPage } from './../pages/tutorial/tutorial';
 import { MainPage } from './../pages/main/main';
 import { SignUpFormPage } from './../pages/sign-up-form/sign-up-form';
@@ -7,6 +8,7 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { IdeasPage } from '../pages/ideas/ideas';
 
 @Component({
   templateUrl: 'app.html'
