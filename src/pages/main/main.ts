@@ -14,6 +14,13 @@ import { ProfilePage } from '../profile/profile';
 export class MainPage {
   public lottieConfig: Object;
   private anim: any;
+  public cardTextCollection:any[]= [
+    'Singapur.','Busca un libro y lee su primer párrafo. ','Desordénalo todo.  ',
+    '¿Cómo resolvería el reto Richard Branson?','Piensa como Jack Ma. ','¿Qué haría tu mejor amigo? ',
+    'Juega el juego. ','Haz cosas imperfectas. ','Déjà vu.','Nunca ponga los huevos en una sola cesta.',
+    'Haz una lista de diez cosas que podrías hacer y haz lo último en la lista.','Elimina.',
+    'Encuéntrele la comba al palo.'
+   ]; 
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -76,10 +83,6 @@ clicker(){
   
   }
 
-  ionViewDidLoad() {
-    
-    console.log('ionViewDidLoad MainPage');
-  }
 
   logOut(){
     this.afs.auth.signOut().then(()=>{  
@@ -92,6 +95,12 @@ clicker(){
   }
   profile(){
     this.navCtrl.push(ProfilePage);
+  }
+
+
+  ionViewDidLoad() {
+    
+ 
   }
 
 

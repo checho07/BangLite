@@ -8,14 +8,29 @@
 
     <div class="photoSection">
      <ion-grid>
-       <ion-row>
-         <ion-col text-center>
-
+       <ion-row >
+         <ion-col align="center" col-12>
               <img class="profilePic" src="../../assets/imgs/perfil.jpeg" id="imgPic">
-
-
          </ion-col>
        </ion-row>
+       <ion-row >
+          <ion-col align="center" col-12>
+            <h1>Sergio Velandia</h1>
+            <h2>sf.velandia@gmail.com</h2>
+          </ion-col>
+        </ion-row>
+        <ion-row >
+            <ion-col align="center" col-12>
+                <ion-segment [(ngModel)]="pet">
+                    <ion-segment-button value="kittens">
+                      Kittens
+                    </ion-segment-button>
+                    <ion-segment-button value="puppies">
+                      Puppies
+                    </ion-segment-button>
+                  </ion-segment>
+            </ion-col>
+          </ion-row>
      </ion-grid>
 
       </div>

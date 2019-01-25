@@ -14,7 +14,7 @@ import { IdeasPage } from '../pages/ideas/ideas';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = ProfilePage;
+  rootPage:any = MainPage;
 
   constructor(private afAuth: AngularFireAuth,platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

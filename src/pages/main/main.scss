@@ -10,6 +10,16 @@ page-main {
         width: 100%;
         height: 210%;     
     }
+
+    #textCard{
+        position: absolute;
+        top:15%;
+        left: 22%;
+        z-index: 200;
+        width: 50%;
+        opacity: 1;
+    }
+
     #cardMain{
         position: absolute;
         top:10%;
@@ -80,7 +90,7 @@ page-main {
       #hand{
         z-index: 10;
         position: absolute;
-        top:75%;
+        top:76%;
         left: 35%;
         
     }
