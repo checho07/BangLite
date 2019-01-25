@@ -14,11 +14,11 @@ import { IdeasPage } from '../pages/ideas/ideas';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage:any = ProfilePage;
 
   constructor(private afAuth: AngularFireAuth,platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
-      
+
       this.afAuth.authState.subscribe(user => {
 
         if(user !== null){

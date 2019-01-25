@@ -1,50 +1,24 @@
 page-profile {
-  ion-item ion-label {
-    margin: 0 !important;
-  }
 
-  ion-list {
-    margin: 0;
-    padding: 0;
+  .photoSection{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: color($colors,light);
+    width:800px;
+    height: 200px !important;
   }
+  .profilePic{
+    border-radius: 50%;
 
-  ion-list-header {
-    
-    margin: 0;
-    padding: 10px 16px;
+    width: 100px;
+    height: 100px;
+    border: 1px solid red;
+
   }
+  #imgPic{
 
-  ion-item {
-    padding: 0;
+    border-radius:50%;
   }
-
-  ion-datetime {
-    padding-left: 3px !important;
-  }
-
-  .item-inner {
-    border: none !important;
-    padding: 0;
-  }
-
-  .popover-content {
-    min-height: 0 !important;
-    max-height: 88px !important;
-  }
-
-  .profile-popover {
-    margin-top: -1px !important;
-  }
-
-  .placeholder-profile {
-    color: #CCCCCC;
-  }
-
-  .dob-label {
-    color: #000000 !important;
-    padding: 10px !important;
-    max-width: 50% !important;
-  }
-
 
 }
