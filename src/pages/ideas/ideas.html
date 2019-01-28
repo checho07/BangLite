@@ -15,8 +15,9 @@
 
 <ion-content padding>
     
-    <ion-item>      
+    <ion-item class="textareaClass">      
         <ion-textarea 
+       
            [(ngModel)]='titulo'
            clearOnEdit="true"
            autofocus="true" 
@@ -26,7 +27,7 @@
            placeholder="Titulo de tu idea."> 
         </ion-textarea>     
       </ion-item>
-  <ion-item>      
+  <ion-item  class="textareaClass">      
     <ion-textarea 
     [(ngModel)]='idea'
      clearOnEdit="true"
@@ -46,7 +47,7 @@
 
   <ion-list no-lines >
   
-           <ion-item *ngFor="let idea of ideasCollection | async" > 
+           <ion-item *ngFor="let idea of ideasCollection | async"  (tap)="showIdea(idea)"> 
               <ion-icon name="bulb" item-start></ion-icon>
                {{idea.titulo}}            
             </ion-item>

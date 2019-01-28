@@ -1,6 +1,6 @@
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { AngularFirestore, AngularFirestoreCollection,AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 
@@ -16,7 +16,7 @@ interface ideaInterface{
   templateUrl: 'ideas.html',
 })
 export class IdeasPage {
-
+  'KHWRZY6YCTNXaKHkvAFKve1Fyuo1'
   idea:any;
   titulo:any;
   private uid;
@@ -25,15 +25,17 @@ export class IdeasPage {
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
+              public alertCtrl:AlertController,
               private afst: AngularFirestore,
               private nativeStorage: NativeStorage,
               private loadinCtrl : LoadingController,
               private toastCtrl: ToastController) {
-                this.nativeStorage.getItem('uid').then(res=>{
-                  this.uid = res;
-                  this.ideasReference = this.afst.collection('users').doc(this.uid).collection('ideas');  
+   
+                 this.nativeStorage.getItem('uid').then(res=>{
+                   this.uid = res;
+                   this.ideasReference = this.afst.collection('users').doc(this.uid).collection('ideas');  
                   this.ideasCollection = this.ideasReference.valueChanges();
-                })
+               })
 
   };
 
@@ -51,7 +53,7 @@ export class IdeasPage {
     loading.present();
 
     this.afst.collection('users')
-      .doc(this.uid).collection('ideas')
+      .doc( this.uid).collection('ideas')
         .add({titulo:this.titulo,idea:this.idea}).then(()=>{
           loading.dismiss();
           this.presentToast('Idea guardada.');
@@ -74,6 +76,15 @@ export class IdeasPage {
       position: 'bottom'
     });
     toast.present();
+  }
+
+  showIdea(idea){
+    let alert = this.alertCtrl.create({
+      title: `<h1>` + idea.titulo+ `</h1>`,
+      message:`<p>` + idea.idea+ `</p>`,
+      cssClass:'alertClass',
+      buttons: ['Cerrar']
+    }).present();
   }
 
 

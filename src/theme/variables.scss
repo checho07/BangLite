@@ -52,7 +52,9 @@ $modal-inset-min-height-large:00px;
 $modal-inset-height-large:400px;
 
 // Input variables
+
 $list-md-background-color:color($colors,principal);
+//$list-md-background-color:transparent;
 $text-input-md-background-color:$list-md-background-color;
 
 $text-color:        #FF9052;
@@ -64,6 +66,11 @@ $toolbar-md-height:20px;
 $navbar-md-height:$toolbar-md-height;
 $popover-md-width:300px;
 $popover-md-max-height:100%;
+$alert-md-background-color:color($colors,principal);
+$alert-md-message-text-color:white;
+$alert-md-button-background-color:color($colors,dark);
+$alert-md-border-radius:20px;
+$alert-md-button-border-radius:20px;
 
 
 

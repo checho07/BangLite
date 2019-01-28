@@ -13,11 +13,27 @@ page-main {
 
     #textCard{
         position: absolute;
-        top:15%;
-        left: 22%;
+        top:20%;
+        left: 25%;
         z-index: 200;
         width: 50%;
+        opacity: 0;
+        transform: rotateY(180deg);
+        transition:all 1s;
+    };
+
+    #textCard.fadeIn{
         opacity: 1;
+        transition-timing-function: ease-in-out();
+        transition:all 1s;
+        z-index: 500;
+        transform: rotateY(360deg);
+    }
+    #textCard.fadeOut{
+        opacity: 0;
+        z-index: 0;
+        transform: rotateY(180deg);
+        transition:all 1s;
     }
 
     #cardMain{
@@ -114,7 +130,11 @@ page-main {
         transition-timing-function: ease-in-out();
         transition:all 1s;
     }
-
+ #cardTextContent{
+    font-family: 'ShadowIntoLight' !important;
+    color: #FF9052 !important;
+    font-size: large;
+ }
 }
 
 
