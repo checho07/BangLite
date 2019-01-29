@@ -4,8 +4,8 @@
 
 <ion-content >
   <h1 class="title" ion-text text-wrap >Cuentanos algo sobre ti</h1>
-  <ion-list class="list" no-bounce>       
-     
+  <ion-list class="list" no-bounce>
+
     <ion-item class="itemSelect">
         <ion-label>Genero</ion-label>
         <ion-select [(ngModel)]="formulario.genero" interface="popover"  (ionChange)="ableFn(1)" >
@@ -19,16 +19,16 @@
             <ion-option value="Presencial">Presencial</ion-option>
             <ion-option value="Distancia">Distancia</ion-option>
             <ion-option value="Virtual">Virtual</ion-option>
-            
+
           </ion-select>
         </ion-item>
         <ion-item class="itemSelect">
             <ion-label text-wrap>Programa académico</ion-label>
             <ion-select  text-wrap [(ngModel)]="formulario.programa" interface="popover"   selectedText="Programa" disabled="true" disabled="{{proDisabled}}" (ionChange)="ableFn(3)">
-              <span text-wrap *ngIf="modSelected == 1"> <ion-option text-wrap value="{{programa}}" *ngFor="let programa of programasPresencial"  >{{programa}}</ion-option></span>
-              <span text-wrap *ngIf="modSelected == 2"> <ion-option text-wrap value="{{programa}}" *ngFor="let programa of programasDistancia"  >{{programa}}</ion-option></span>              
-              <span text-wrap *ngIf="modSelected == 3"> <ion-option text-wrap value="{{programa}}" *ngFor="let programa of programasVirtual"  >{{programa}}</ion-option></span>           
-              
+              <span text-wrap *ngIf="modSelected == 1"> <ion-option text-wrap value="{{programa}}" *ngFor="let programa of programasPresencial "  >{{programa}}</ion-option></span>
+              <span text-wrap *ngIf="modSelected == 2"> <ion-option text-wrap value="{{programa}}" *ngFor="let programa of programasDistancia"  >{{programa}}</ion-option></span>
+              <span text-wrap *ngIf="modSelected == 3"> <ion-option text-wrap value="{{programa}}" *ngFor="let programa of programasVirtual"  >{{programa}}</ion-option></span>
+
             </ion-select>
           </ion-item>
           <ion-item class="itemSelect">
@@ -38,7 +38,7 @@
                 <ion-option value="Tecnologo">Tecnólogo</ion-option>
                 <ion-option value="Profesional">Profesional</ion-option>
                 <ion-option value="Especializacion">Especializacion</ion-option>
-                
+
               </ion-select>
             </ion-item>
             <ion-item class="itemSelect">
@@ -52,6 +52,6 @@
                 </ion-select>
               </ion-item>
                 <button ion-button class="btnForm" color="dark" round  block [disabled]="btnDisabled" (click)="saveForm()">Siguiente</button>
-             
+
               </ion-list>
 </ion-content>

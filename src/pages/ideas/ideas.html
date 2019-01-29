@@ -14,48 +14,50 @@
 
 
 <ion-content padding>
-    
-    <ion-item class="textareaClass">      
-        <ion-textarea 
-       
+
+    <ion-item class="textareaClass">
+        <ion-textarea
+
            [(ngModel)]='titulo'
            clearOnEdit="true"
-           autofocus="true" 
-           spellcheck="true" 
+           autofocus="true"
+           spellcheck="true"
            maxLength="40"
            required="true"
-           placeholder="Titulo de tu idea."> 
-        </ion-textarea>     
+           placeholder="Titulo de tu idea.">
+        </ion-textarea>
       </ion-item>
-  <ion-item  class="textareaClass">      
-    <ion-textarea 
+  <ion-item  class="textareaClass">
+    <ion-textarea
     [(ngModel)]='idea'
      clearOnEdit="true"
-       spellcheck="true" 
+       spellcheck="true"
        maxLength="300"
        rows="3"
        required="true"
-       placeholder="Escribe tu idea."> 
-    </ion-textarea>     
+       placeholder="Escribe tu idea.">
+    </ion-textarea>
   </ion-item>
   <br>
   <ion-item-divider color="light">
       <ion-label>
         Tus ideas
-      </ion-label>      
+      </ion-label>
     </ion-item-divider>
 
   <ion-list no-lines >
-  
-           <ion-item *ngFor="let idea of ideasCollection | async"  (tap)="showIdea(idea)"> 
+
+           <ion-item *ngFor="let idea of ideasCollection | async"  (tap)="showIdea(idea)">
               <ion-icon name="bulb" item-start></ion-icon>
-               {{idea.titulo}}            
+               {{idea.titulo}}
             </ion-item>
-         
+
+
+
     </ion-list>
 
 <ion-fab bottom right >
-   <button color="dark" ion-fab  (click)="addIdea()"> <ion-icon name="add"> </ion-icon> </button>
+   <button color="light" ion-fab  (click)="addIdea()"> <ion-icon name="add"> </ion-icon> </button>
 </ion-fab>
- 
+
 </ion-content>

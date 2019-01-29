@@ -14,23 +14,34 @@ import { IdeasPage } from '../pages/ideas/ideas';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage:any = IdeasPage;
 
   constructor(private afAuth: AngularFireAuth,platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
-    platform.ready().then(() => {
 
-      this.afAuth.authState.subscribe(user => {
+    this.afAuth.authState.subscribe(user => {
 
-        if(user !== null){
-          this.rootPage = MainPage;
-        }
+      if(user !== null){
+        this.rootPage = MainPage;
+        platform.ready().then(() => {
+
+          statusBar.hide();
+          // Okay, so the platform is ready and our plugins are available.
+          // Here you can do any higher level native things you might need.
+          statusBar.styleDefault();
+          splashScreen.hide();
+        });
+      }
+
+      platform.ready().then(() => {
+
+        statusBar.hide();
+        // Okay, so the platform is ready and our plugins are available.
+        // Here you can do any higher level native things you might need.
+        statusBar.styleDefault();
+        splashScreen.hide();
       });
-      statusBar.hide();
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
-      splashScreen.hide();
     });
+
   }
 }
 

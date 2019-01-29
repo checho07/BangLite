@@ -7,7 +7,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { NativeStorage } from '@ionic-native/native-storage';
 
 export interface user {
- 
+
   email: string;
   password: string;
 }
@@ -22,7 +22,7 @@ export class LoginPage {
 
   constructor(private afAuth: AngularFireAuth,
               public forgotCtrl: AlertController,
-              public navCtrl: NavController, 
+              public navCtrl: NavController,
               public nav: NavController,
               public toastCtrl: ToastController,
               private loadingCtrl: LoadingController,
@@ -33,11 +33,11 @@ export class LoginPage {
 
                 let emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
 
-                this.SignInForm = this.formBuilder.group({                 
-                  email:["",[Validators.required, Validators.pattern(emailPattern)]],                  
+                this.SignInForm = this.formBuilder.group({
+                  email:["",[Validators.required, Validators.pattern(emailPattern)]],
                   password:["",Validators.required]
-                 
-                }); 
+
+                });
   }
 
   ionViewDidLoad() {
@@ -52,7 +52,8 @@ export class LoginPage {
   async login() {
 
     let loading = this.loadingCtrl.create({
-      content: 'Espera...'
+      content: 'Espera...',
+      spinner:'bubbles'
     });
 
 
@@ -68,20 +69,20 @@ export class LoginPage {
 			password: this.user.password
     };
     try {
-       loading.present(); 
+       loading.present();
 
        this.afAuth.auth.signInWithEmailAndPassword(credentials.email,credentials.password).then((data)=>{
 
         this.nativeStorage.setItem('uid',data.user.uid).then(()=>{
-          
+
           this.nav.setRoot(MainPage);
 
           loading.dismiss();
-  
+
           console.log(data);
         })
 
-        
+
        },
       err=>{
         loading.dismiss();
@@ -91,7 +92,7 @@ export class LoginPage {
           case "auth/wrong-password":
           this.presentToast("Contraseña Incorrecta");
           break;
-          
+
           case "auth/user-not-found":
           this.presentToast("Usuario no encontrado");
           break;
@@ -107,7 +108,7 @@ export class LoginPage {
       loading.dismiss();
       console.log(error);
     }
-    	
+
   };
 
   presentToast(msj : string){
@@ -116,7 +117,7 @@ export class LoginPage {
       duration: 3000,
       position: 'bottom'
     });
-    toast.present(); 
+    toast.present();
   };
-  
+
 }

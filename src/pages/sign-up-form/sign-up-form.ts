@@ -31,16 +31,16 @@ export class SignUpFormPage {
    redDisabled:boolean = true;
    btnDisabled:boolean = true;
    formulario = {genero:'',modalidad:'',programa:'',nivel:'',publicidad:'',uid:''};
-   
+
   constructor(public navCtrl: NavController,
               private afst: AngularFirestore,
               private formBuilder:FormBuilder,
-              private nativeStorage: NativeStorage, 
+              private nativeStorage: NativeStorage,
               public navParams: NavParams,
               private toastCtrl: ToastController,
                private loadinCtrl : LoadingController) {
-  
-    
+
+
 
     this.nativeStorage.getItem('uid').then(res=>
       {
@@ -53,34 +53,34 @@ export class SignUpFormPage {
   ionViewDidLoad() {
     this.programasDistancia = [
       "Administración de Empresas",
-      "Administración de Empresas Agroindustriales"      
+      "Administración de Empresas Agroindustriales"
     ];
-  
+
     this.programasVirtual = [
-      "Ingeniería de Sistemas",
-      "Administración Pública",
-      "Administración de Empresas Agroindustriales",
-      "Dirección y Producción de Medios Audiovisuales"    
+      'Administración de Empresas Agroindustriales',
+      'Administración Pública',
+      'Dirección y Producción de Medios Audiovisuales',
+      'Ingeniería de Sistemas'
     ];
 
     this.programasPresencial = [
-      "Ingeniería de Sistemas",
-      "Ingeniería Electrónica",
-      "Administración de Servicios de Salud",
-      "Administración de la Seguridad Social",
-      "Administración Turística y Hotelera",
-      "Contaduría Pública",
-      "Negocios Internacionales",
-      "Administración de Empresas",
-      "Dirección y Producción de Medios Audiovisuales",
-      "Diseño Gráfico",
-      "Diseño de Modas",
-      "Comunicación Social"    
-    ]; 
+  '    Administración de Empresas',
+      'Administración de la Seguridad Social',
+      'Administración de Servicios de Salud',
+      'Administración Turística y Hotelera',
+      'Comunicación Social',
+      'Contaduría Pública',
+'      Dirección y Producción de Medios Audiovisuales',
+      'Diseño de Modas',
+      'Diseño Gráfico',
+      'Ingeniería de Sistemas',
+      'Ingeniería Electrónica',
+      'Negocios Internacionales '
+    ];
 
   };
 
-  
+
   ableFn(number){
     switch(number){
       case 1:this.modDisabled = false;
@@ -95,12 +95,12 @@ export class SignUpFormPage {
       break;
     }
   };
-  
-  
+
+
   testfn(event){
 
     this.ableFn(2);
-    
+
     console.log(event)
     switch(event){
       case 'Presencial':
@@ -111,7 +111,7 @@ export class SignUpFormPage {
       break;
       case 'Virtual':
       this.modSelected = 3;
-      break; 
+      break;
       default:
       this.modSelected = 0;
     }
@@ -122,7 +122,8 @@ export class SignUpFormPage {
 
     let loading = this.loadinCtrl.create(
       {
-      content:"Guardando datos..."
+      content:"Guardando datos...",
+      spinner:'bubbles'
       })
     loading.present();
 
@@ -132,9 +133,9 @@ export class SignUpFormPage {
       loading.dismiss();
       this.navCtrl.setRoot(TutorialPage);
       this.presentToast("Datos Guardados.");
-     
+
       })
-    
+
   };
   presentToast(msj : string){
     let toast = this.toastCtrl.create({

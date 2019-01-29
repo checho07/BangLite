@@ -2,7 +2,7 @@
 
 <ion-content  scroll="false" no-bounce>
 
-   
+
     <ion-fab bottom right  >
         <button color="principal" ion-fab > <ion-icon name="menu"> </ion-icon> </button>
         <ion-fab-list side="top">
@@ -13,30 +13,29 @@
        </ion-fab>
 
        <div text-wrap padding id="textCard">
-           <span id="cardTextContent">{{cardTextCollection[random]}}</span>  
-          </div> 
-   
+           <span id="cardTextContent">{{cardTextCollection[random]}}</span>
+          </div>
+
       <div padding id="cardMain">
-          <img src="../../assets/backgrounds/Tarjeta_reverso.png" (tap)="showReverse(0)">           
-        </div> 
+          <img src="../../assets/backgrounds/Tarjeta_reverso.png" (tap)="showReverse(0)">
+        </div>
 
         <div padding id="cardReverse">
-            <img src="../../assets/backgrounds/Tarjeta_frontal.png"  (tap)="restart()">           
-          </div> 
+            <img src="../../assets/backgrounds/Tarjeta_frontal.png"  (tap)="restart()">
+          </div>
 
       <lottie-animation-view
       [options]="lottieConfig"
       [width]="100"
       [height]="80"
-      (animCreated)="handleAnimation($event)"
       (click)="clicker()" id="hand">
     </lottie-animation-view>
     <div padding id="bag">
-        <img src="../../assets/backgrounds/Morral_BANG2.gif"  (click)="clicker()">           
-      </div> 
-    
-      <div id="containerBag" >      
-    
+        <img src="../../assets/backgrounds/Morral_BANG2.gif"  (click)="clicker()">
+      </div>
+
+      <div id="containerBag" >
+
         <img src="../../assets/backgrounds/fondon.png" id="imgBag">
       </div>
 

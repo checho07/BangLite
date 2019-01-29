@@ -44,13 +44,14 @@ export const environment = {
     MainPage,
     ProfilePage,
     IdeasPage
-    
+
   ],
   imports: [
     BrowserModule,
     LottieAnimationViewModule.forRoot(),
     IonicModule.forRoot(MyApp,{
-      popoverLeave:'wp-transition'
+      popoverLeave:'wp-transition',
+      monthNames:['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
     }),
     AngularFireModule.initializeApp(environment.firebase, 'BangLite'),
     AngularFireAuthModule,
@@ -73,8 +74,8 @@ export const environment = {
     AnimationService,
     NativeStorage,
     NativePageTransitions,
-    
-    
+
+
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

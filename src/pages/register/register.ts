@@ -24,14 +24,14 @@ export interface user {
 export class RegisterPage {
   public  SignUpForm: FormGroup;
   today:string = new Date().toISOString();
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private formBuilder:FormBuilder,
               public viewCtrl: ViewController,
-              private afAuth: AngularFireAuth,              
+              private afAuth: AngularFireAuth,
               public afs : AngularFirestore,
               private loadingCtrl: LoadingController,
-              private nativeStorage: NativeStorage, 
+              private nativeStorage: NativeStorage,
               private toastCtrl: ToastController,
               public nav: NavController) {
 
@@ -41,7 +41,7 @@ export class RegisterPage {
                   email:["",[Validators.required, Validators.pattern(emailPattern)]],
                   password:["",Validators.required],
                   DOB:["",Validators.required]
-                }); 
+                });
   }
 
   ionViewDidLoad() {
@@ -54,48 +54,49 @@ export class RegisterPage {
 
   async register() {
 
-    let user : user; 
+    let user : user;
     user = this.SignUpForm.value;
     let loading= this.loadingCtrl.create({
       content:"Registrando Usuario...",
+      spinner:'bubbles'
 
-    });          
-    
+    });
+
 
 
     if(!user.email){
       return;
     }
     try {
-      loading.present(); 
+      loading.present();
       this.afAuth.auth.createUserWithEmailAndPassword(user.email,user.password).then(result =>{
-        
+
         let email = user.email;
         let name = user.name;
         let dob = user.DOB;
         let uid = result.user.uid;
-        let newUser = result.additionalUserInfo.isNewUser; 
+        let newUser = result.additionalUserInfo.isNewUser;
         this.nativeStorage.setItem('uid',result.user.uid);
-        
-        
+
+
         this.afs.collection('users').doc(result.user.uid).set({email,name,uid,dob}).then(fsRes=>{
 
-           
+
             if(newUser){
-              this.nav.setRoot(SignUpFormPage); 
+              this.nav.setRoot(SignUpFormPage);
               loading.dismiss();
             }else{
               this.nav.setRoot(SignUpFormPage);
               loading.dismiss();
-            }        
-          
-        
+            }
+
+
         },err =>{
           console.log(err);
           loading.dismiss();
           alert(err);
         })
-        
+
       },
       err=>{
         loading.dismiss();
@@ -115,7 +116,7 @@ export class RegisterPage {
       loading.dismiss();
       console.log(error);
     }
-    
+
   }
 
   presentToast(msj : string){

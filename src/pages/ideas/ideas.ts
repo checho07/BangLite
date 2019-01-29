@@ -23,32 +23,34 @@ export class IdeasPage {
   public ideasReference: AngularFirestoreCollection<ideaInterface>;
   public ideasCollection:Observable<ideaInterface[]>;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public alertCtrl:AlertController,
               private afst: AngularFirestore,
               private nativeStorage: NativeStorage,
               private loadinCtrl : LoadingController,
               private toastCtrl: ToastController) {
-   
+
                  this.nativeStorage.getItem('uid').then(res=>{
                    this.uid = res;
-                   this.ideasReference = this.afst.collection('users').doc(this.uid).collection('ideas');  
+                   this.ideasReference = this.afst.collection('users').doc(this.uid).collection('ideas');
                   this.ideasCollection = this.ideasReference.valueChanges();
                })
 
   };
 
-  ionViewDidLoad() { 
-   
-    
+  ionViewDidLoad() {
+
+
   }
 
   addIdea(){
 
-    let loading = this.loadinCtrl.create(
+    if (this.titulo !== undefined && this.idea !== undefined) {
+      let loading = this.loadinCtrl.create(
       {
-      content:"Guardando datos..."
+      content:"Guardando datos...",
+      spinner:'bubbles'
       })
     loading.present();
 
@@ -66,8 +68,12 @@ export class IdeasPage {
           loading.dismiss();
           this.presentToast(err);
         });
-   
+    } else {
+      this.presentToast('Escribe tu idea.')
+    }
   };
+
+
 
   presentToast(msj : string){
     let toast = this.toastCtrl.create({

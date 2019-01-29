@@ -33,10 +33,10 @@ export class ProfilePage {
   public infoReference:user;
   private uid:any;
   public modSelected:number ;
-  segment:string = "cuenta"; 
+  segment:string = "cuenta";
   today:string = new Date().toISOString();
   formulario = {genero:'',modalidad:'',programa:'',nivel:'',publicidad:'',uid:''};
-   
+
 
 
   constructor(public navCtrl: NavController,
@@ -50,32 +50,49 @@ export class ProfilePage {
 
                 let emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
                 this.SignUpForm = this.formBuilder.group({
-                  name:["",Validators.required],                  
+                  name:["",Validators.required],
                   DOB:['',Validators.required]
-                });  
-               
+                });
+
                 this.nativeStorage.getItem('uid').then(res=>{
+
                   this.uid = res;
+
+                  let loading= this.loadingCtrl.create({
+                    content:"Actualizando Usuario...",
+                    spinner:'bubbles'
+
+                  });
                   this.afs.collection('users').doc(this.uid).valueChanges().subscribe(res=>{
                     this.accountInfo.name = res['name'];
                     this.accountInfo.email = res['email'];
-                    this.accountInfo.DOB = res['dob'];     
+                    this.accountInfo.DOB = res['dob'];
+                    loading.dismiss();
+                   },err =>{
+                     loading.dismiss();
+                     this.presentToast(err);
                    });
-                     
+
                   this.afs.collection('users').doc(this.uid).collection('formulario').doc(this.uid).valueChanges().subscribe(res=>{
                    this.formulario.genero = res['genero'];
-                   this.formulario.modalidad = res['modalidad'];                    
-                   this.formulario.nivel = res['nivel'];   
-                   this.formulario.programa = res['programa'];   
-                   this.formulario.publicidad = res['publicidad'];                      
-                   this.formulario.uid = res['uid']; 
-                   
-                     });
+                   this.formulario.modalidad = res['modalidad'];
+                   this.formulario.nivel = res['nivel'];
+                   this.formulario.programa = res['programa'];
+                   this.formulario.publicidad = res['publicidad'];
+                   this.formulario.uid = res['uid'];
+
+                     },err =>{
+                       loading.dismiss();
+                       this.presentToast(err)
+
+                    });
+                },err =>{
+                  this.presentToast(err);
                 })
 
-              
-               
-               
+
+
+
                 // this.nativeStorage.getItem('uid').then(res=>{
                 //   this.uid = res;
                 //   this.accountInfo = this.afs.collection('users').doc('KHWRZY6YCTNXaKHkvAFve1Fyuo1').valueChanges().subscribe(resInfo=>{
@@ -83,24 +100,24 @@ export class ProfilePage {
                 //     alert(JSON.stringify( this.accountInfo));
                 //   })
                 // })
-              
 
-      
-               
+
+
+
   }
 
   ionViewWillEnter(){
 
     this.programasDistancia = [
       "Administración de Empresas",
-      "Administración de Empresas Agroindustriales"      
+      "Administración de Empresas Agroindustriales"
     ];
-  
+
     this.programasVirtual = [
       "Ingeniería de Sistemas",
       "Administración Pública",
       "Administración de Empresas Agroindustriales",
-      "Dirección y Producción de Medios Audiovisuales"    
+      "Dirección y Producción de Medios Audiovisuales"
     ];
 
     this.programasPresencial = [
@@ -115,9 +132,9 @@ export class ProfilePage {
       "Dirección y Producción de Medios Audiovisuales",
       "Diseño Gráfico",
       "Diseño de Modas",
-      "Comunicación Social"    
-    ]; 
- 
+      "Comunicación Social"
+    ];
+
   }
 
 
@@ -142,46 +159,47 @@ export class ProfilePage {
   }
 
   updateP() {
-      
+
       // this.profileData.updatePic(this.profileP);
   }
 
 
   async register() {
 
-    let user : user2; 
+    let user : user2;
     user = this.SignUpForm.value;
     let loading= this.loadingCtrl.create({
-      content:"Registrando Usuario...",
+      content:"Actualizando Usuario...",
+      spinner:'bubbles'
 
-    });   
+    });
     try {
-      loading.present(); 
-    
-        
-        
+      loading.present();
+
+
+
         this.afs.collection('users')
         .doc(this.uid).update({name:user.name,dob:user.DOB}).then(fsRes=>{
 
-           
+
               loading.dismiss();
               this.presentToast("Datos actualizados.");
-          
-        
+
+
         },err =>{
           console.log(err);
           loading.dismiss();
           alert(err);
-        })    
-    
+        })
+
     } catch (error) {
       loading.dismiss();
       console.log(error);
     }
-    
+
   }
 
-  
+
   presentToast(msj : string){
     let toast = this.toastCtrl.create({
       message: msj,
@@ -195,7 +213,8 @@ export class ProfilePage {
 
     let loading = this.loadingCtrl.create(
       {
-      content:"Actualizando datos..."
+      content:"Actualizando datos...",
+      spinner:'bubbles'
       })
     loading.present();
 
@@ -204,9 +223,9 @@ export class ProfilePage {
       console.log(result);
       loading.dismiss();
       this.presentToast("Datos actualizados.");
-     
+
       })
-    
+
   };
 
 }

@@ -26,13 +26,13 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
- 
+
 <ion-content class="bgColor" no-bounce>
 
     <!-- <h1 align="center">Registro</h1> -->
-  
 
-   
+
+
 
 
     <form  [formGroup]="SignUpForm" (ngSubmit)="register()" class="formR" >
@@ -44,7 +44,7 @@
           </ion-label>
           <ion-input  type="text" formControlName="name"></ion-input>
         </ion-item>
-<!-- 
+<!--
         <ion-item>
             <ion-label floating>
               <ion-icon name="person" item-start class="text-primary"></ion-icon>
@@ -52,7 +52,7 @@
             </ion-label>
             <ion-input  type="text" formControlName="user"></ion-input>
           </ion-item> -->
-  
+
         <ion-item>
           <ion-label floating>
             <ion-icon name="mail" item-start class="text-primary"></ion-icon>
@@ -60,7 +60,7 @@
           </ion-label>
           <ion-input type="email" formControlName="email"></ion-input>
         </ion-item>
-  
+
         <ion-item>
           <ion-label floating>
             <ion-icon name="lock" item-start class="text-primary"></ion-icon>
@@ -74,7 +74,7 @@
                 <ion-icon name="calendar" item-start ></ion-icon>
                  Fecha de Nacimiento
               </ion-label>
-              <ion-datetime pickerFormat="D/MMMM/YYYY" min="1900-01-01"  max="{{today}}" displayFormat="D/M/YYYY" formControlName="DOB"></ion-datetime>
+              <ion-datetime  doneText="Listo" cancelText="Cerrar" pickerFormat="D/MMMM/YYYY" min="1900-01-01"  max="{{today}}" displayFormat="D/M/YYYY" formControlName="DOB"></ion-datetime>
           </ion-item>
           <br>
         <button ion-button block  round color="dark" tappable type="submit" [disabled]="!SignUpForm.valid" >

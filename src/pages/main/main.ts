@@ -14,10 +14,10 @@ import { ProfilePage } from '../profile/profile';
 export class MainPage {
   public lottieConfig: Object;
   private anim: any;
-  public cardTextCollection:any[]; 
+  public cardTextCollection:any[];
   random:number;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private afs : AngularFireAuth,
               ) {
@@ -36,9 +36,9 @@ export class MainPage {
                 'Sé aburrido.','Adapta.','Quita las partes importantes. ','No hay reglas.','Piensa cosas imposibles de hacer.',
                 'Cambia de roles.','¡Rómpalo!','Haz trocitos y después júntalos.','¿Qué soñaste ayer?','Cuantas manos y cabezas sean necesarias. ',
                 'Modifica.','Duro como una roca, flexible como…','El cielo es un vecindario. ','Como en casa.','Devuélvete.','Nado en un submarino largas distancias. ',
-                'Humanice cualquier cosa.','Empieza por un garaje. ','¿Qué pasaría si…?','Pon otros usos. ','Dale un vuelco a tu rutina. ','Lego.','Apórtele valor de verdad.' 
+                'Humanice cualquier cosa.','Empieza por un garaje. ','¿Qué pasaría si…?','Pon otros usos. ','Dale un vuelco a tu rutina. ','Lego.','Apórtele valor de verdad.'
                  ]
-   
+
 
     this.lottieConfig = {
       path: 'assets/hand.json',
@@ -48,7 +48,7 @@ export class MainPage {
   }
   handleAnimation(anim: any) {
     this.anim = anim;
-    
+
     console.log(anim)
 }
 clicker(){
@@ -56,16 +56,16 @@ clicker(){
 }
   scrollBack(){
 
-    this.random =  Math.floor((Math.random() * 50) + 1)
+    this.random =  Math.floor((Math.random() * 49) + 1)
     setTimeout( function() {
       document.getElementById("containerBag").classList.remove('restartContainer');
-      document.getElementById("containerBag").classList.add("animateds"); 
-      document.getElementById('bag').classList.remove('fadeIn');    
+      document.getElementById("containerBag").classList.add("animateds");
+      document.getElementById('bag').classList.remove('fadeIn');
       document.getElementById('bag').classList.add('fadeOut');
       document.getElementById('cardMain').classList.remove('fadeOut');
-      document.getElementById('cardMain').classList.add('fadeIn'); 
+      document.getElementById('cardMain').classList.add('fadeIn');
       document.getElementById('hand').classList.remove('fadeIn');
-      document.getElementById('hand').classList.add('fadeOut'); 
+      document.getElementById('hand').classList.add('fadeOut');
 
     })
   };
@@ -82,11 +82,11 @@ clicker(){
 
     setTimeout(function(){
       document.getElementById('cardReverse').classList.add('fadeIn');
-     
-      
-    },300);   
-  
-  } 
+
+
+    },300);
+
+  }
 
   restart(){
     document.getElementById('cardReverse').classList.remove('fadeIn');
@@ -99,15 +99,15 @@ clicker(){
       document.getElementById('bag').classList.remove('fadeOut');
       document.getElementById('bag').classList.add('fadeIn');
       document.getElementById('hand').classList.remove('fadeOut');
-      document.getElementById('hand').classList.add('fadeIn');    
-    
-   
-  
+      document.getElementById('hand').classList.add('fadeIn');
+
+
+
   }
 
 
   logOut(){
-    this.afs.auth.signOut().then(()=>{  
+    this.afs.auth.signOut().then(()=>{
       this.navCtrl.setRoot(HomePage);
     })
   };
@@ -120,10 +120,10 @@ clicker(){
   }
 
 
-  ionViewDidEnter(){ 
+  ionViewDidEnter(){
 
-    
- 
+
+
   }
 
 
