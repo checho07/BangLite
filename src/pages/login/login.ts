@@ -31,7 +31,7 @@ export class LoginPage {
               private formBuilder:FormBuilder,
               public viewCtrl: ViewController) {
 
-                let emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+                let emailPattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
 
                 this.SignInForm = this.formBuilder.group({
                   email:["",[Validators.required, Validators.pattern(emailPattern)]],

@@ -59,7 +59,7 @@ export class IdeasPage {
         .add({titulo:this.titulo,idea:this.idea}).then(()=>{
           loading.dismiss();
           this.presentToast('Idea guardada.');
-          this.idea = ''; this.titulo = '';
+          this.idea = undefined; this.titulo = undefined;
         },err =>{
           loading.dismiss();
           this.presentToast(err);
@@ -78,7 +78,7 @@ export class IdeasPage {
   presentToast(msj : string){
     let toast = this.toastCtrl.create({
       message: msj,
-      duration: 3000,
+      duration: 2000,
       position: 'bottom'
     });
     toast.present();

@@ -52,22 +52,24 @@ export class MainPage {
     console.log(anim)
 }
 clicker(){
+  
   this.scrollBack();
 }
   scrollBack(){
-
+   
     this.random =  Math.floor((Math.random() * 49) + 1)
-    setTimeout( function() {
-      document.getElementById("containerBag").classList.remove('restartContainer');
-      document.getElementById("containerBag").classList.add("animateds");
+
+    document.getElementById("containerBag").classList.remove('restartContainer','animateds');
+      // document.getElementById("containerBag").classList.remove('restartContainer');
+     document.getElementById("containerBag").classList.add('animateds');
+
       document.getElementById('bag').classList.remove('fadeIn');
       document.getElementById('bag').classList.add('fadeOut');
       document.getElementById('cardMain').classList.remove('fadeOut');
       document.getElementById('cardMain').classList.add('fadeIn');
       document.getElementById('hand').classList.remove('fadeIn');
       document.getElementById('hand').classList.add('fadeOut');
-
-    })
+   
   };
 
   stop() {
