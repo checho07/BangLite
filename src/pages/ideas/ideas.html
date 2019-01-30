@@ -17,14 +17,13 @@
 
     <ion-item class="textareaClass">
         <ion-textarea
-
+        maxlength="20"
            [(ngModel)]='titulo'
            clearOnEdit="true"
            autofocus="true"
-           spellcheck="true"
-           maxLength="40"
+           spellcheck="true"        
            required="true"
-           placeholder="Titulo de tu idea.">
+           placeholder="Título de tu idea.">
         </ion-textarea>
       </ion-item>
   <ion-item  class="textareaClass">
@@ -32,7 +31,7 @@
     [(ngModel)]='idea'
      clearOnEdit="true"
        spellcheck="true"
-       maxLength="300"
+       maxlength="300"
        rows="3"
        required="true"
        placeholder="Escribe tu idea.">

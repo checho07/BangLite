@@ -42,7 +42,7 @@ export class RegisterPage {
                   password:["",Validators.required],
                   DOB:["",Validators.required]
                 });
-  }
+  };
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');

@@ -59,8 +59,11 @@ clicker(){
    
     this.random =  Math.floor((Math.random() * 49) + 1)
 
+    
+    
     document.getElementById("containerBag").classList.remove('restartContainer','animateds');
-      // document.getElementById("containerBag").classList.remove('restartContainer');
+      document.getElementById('containerBag').remove
+          // document.getElementById("containerBag").classList.remove('restartContainer');
      document.getElementById("containerBag").classList.add('animateds');
 
       document.getElementById('bag').classList.remove('fadeIn');

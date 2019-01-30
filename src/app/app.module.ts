@@ -55,7 +55,7 @@ export const environment = {
     }),
     AngularFireModule.initializeApp(environment.firebase, 'BangLite'),
     AngularFireAuthModule,
-    AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
