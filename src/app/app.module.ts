@@ -1,3 +1,4 @@
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { ProfilePage } from './../pages/profile/profile';
 import { MainPage } from './../pages/main/main';
 import { NativeStorage } from '@ionic-native/native-storage';
@@ -19,7 +20,6 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
 import { NativePageTransitions } from '@ionic-native/native-page-transitions';
 import { LottieAnimationViewModule } from 'lottie-angular2';
 import { IdeasPage } from '../pages/ideas/ideas';
-import { identifierModuleUrl } from '@angular/compiler';
 
 export const environment = {
   production: false,
@@ -28,7 +28,7 @@ export const environment = {
     authDomain: "banglite.firebaseapp.com",
     databaseURL: "https://banglite.firebaseio.com",
     projectId: "banglite",
-    storageBucket: "",
+    storageBucket: "banglite.appspot.com",
     messagingSenderId: "53725024997"
   }
 };
@@ -47,7 +47,7 @@ export const environment = {
 
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,    
     LottieAnimationViewModule.forRoot(),
     IonicModule.forRoot(MyApp,{
       popoverLeave:'wp-transition',
@@ -55,6 +55,7 @@ export const environment = {
     }),
     AngularFireModule.initializeApp(environment.firebase, 'BangLite'),
     AngularFireAuthModule,
+    
     AngularFirestoreModule.enablePersistence(),
   ],
   bootstrap: [IonicApp],
@@ -73,7 +74,9 @@ export const environment = {
     SplashScreen,
     AnimationService,
     NativeStorage,
-    NativePageTransitions,
+    NativePageTransitions, 
+    ScreenOrientation,
+    
 
 
     {provide: ErrorHandler, useClass: IonicErrorHandler}

@@ -1,16 +1,11 @@
-import { MainPage } from './../main/main';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+
 import { Component } from '@angular/core';
-import { NavController, NavParams, Select, ToastController, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { TutorialPage } from '../tutorial/tutorial';
-/**
- * Generated class for the SignUpFormPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @Component({
   selector: 'page-sign-up-form',
@@ -34,7 +29,6 @@ export class SignUpFormPage {
 
   constructor(public navCtrl: NavController,
               private afst: AngularFirestore,
-              private formBuilder:FormBuilder,
               private nativeStorage: NativeStorage,
               public navParams: NavParams,
               private toastCtrl: ToastController,

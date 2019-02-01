@@ -1,5 +1,4 @@
 import { MainPage } from './../main/main';
-import { HomePage } from './../home/home';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, AlertController, ToastController, LoadingController } from 'ionic-angular';

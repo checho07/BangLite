@@ -1,8 +1,8 @@
 import { NativeTransitionOptions, NativePageTransitions } from '@ionic-native/native-page-transitions';
 import { RegisterPage } from './../register/register';
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { ModalController, NavParams } from 'ionic-angular';
+import { ModalController } from 'ionic-angular';
 import {AnimationService, AnimationBuilder} from 'css-animator';
 import { LoginPage } from '../login/login';
 @Component({

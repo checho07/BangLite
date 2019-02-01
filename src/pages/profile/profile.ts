@@ -1,15 +1,11 @@
-import { Observable } from 'rxjs';
+
 import { NativeStorage } from '@ionic-native/native-storage';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HomePage } from './../home/home';
-import { LoginPage, user } from './../login/login';
+import {  user } from './../login/login';
 import { NavController, AlertController, LoadingController, ToastController } from 'ionic-angular';
 import { Component } from '@angular/core';
-// import { ProfileData } from '../../providers/profile-data';
-// import { AuthData } from '../../providers/auth-data';
 
-// import { Camera, CameraOptions } from '@ionic-native/camera';
 
 export interface user2 {
   name?: string,
@@ -48,7 +44,7 @@ export class ProfilePage {
                private toastCtrl: ToastController,
                public nav: NavController) {
 
-                let emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+                
                 this.SignUpForm = this.formBuilder.group({
                   name:["",Validators.required],
                   DOB:['',Validators.required]

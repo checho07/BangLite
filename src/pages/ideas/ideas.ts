@@ -1,7 +1,7 @@
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
-import { AngularFirestore, AngularFirestoreCollection,AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 
 
@@ -60,7 +60,10 @@ export class IdeasPage {
           loading.dismiss();
           this.presentToast('Idea guardada.');
           this.idea = ''; this.titulo = '';
-          this.idea = undefined; this.titulo = undefined;
+          setTimeout(res=>{
+            this.idea = undefined; this.titulo = undefined;
+          },2000);
+         
         },err =>{
           loading.dismiss();
           this.presentToast(err);
@@ -86,7 +89,7 @@ export class IdeasPage {
   }
 
   showIdea(idea){
-    let alert = this.alertCtrl.create({
+      this.alertCtrl.create({
       title: `<h1>` + idea.titulo+ `</h1>`,
       message:`<p>` + idea.idea+ `</p>`,
       cssClass:'alertClass',
